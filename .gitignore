@@ -168,3 +168,4 @@ gomoku_board.psd
 
 debugger.py
 pywxdll_test.py
+resources/cache/*

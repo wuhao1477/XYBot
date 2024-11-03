@@ -24,7 +24,9 @@ class PluginManager:
 
         self.excluded_plugins = config["excluded_plugins"]
 
-        self.all_plugin_types = ["command", "text", "mention", "image", "voice", "join_group"]
+        # self.all_plugin_types = ["text", "mention", "image", "voice", "join_group"]
+        # 改成自动获取plugins文件夹下的所有文件夹
+        self.all_plugin_types = [folder for folder in os.listdir("plugins") if os.path.isdir(f"plugins/{folder}")]
 
     def refresh_keywords(self):
         """
@@ -97,6 +99,11 @@ class PluginManager:
         :return: (bool, str) - 如果加载成功，返回True和成功消息。如果加载失败，返回False和失败原因 (bool, str) - True and a success message if the plugins were loaded successfully, False and an error message otherwise.
         """
         logger.info("开始加载所有插件")
+
+        # 如果插件列表为0，则返回False
+        if len(self.all_plugin_types) == 0:
+            logger.error("! 未加载任何插件，因为插件列表为空")
+            return False, "未加载任何插件，因为插件列表为空"
 
         for plugin_type in self.all_plugin_types:
             for plugin_file in os.listdir(f"plugins/{plugin_type}"):
