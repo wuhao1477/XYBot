@@ -15,4 +15,4 @@ class join_group_test(PluginInterface):
 
     async def run(self, bot: client.Wcf, recv: XYBotWxMsg):
         logger.debug(f"收到入群消息！{recv}")
-        bot.send_text(str(recv), recv.roomid)
+        # bot.send_text(str(recv), recv.roomid)
