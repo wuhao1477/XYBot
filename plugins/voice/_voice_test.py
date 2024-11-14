@@ -15,5 +15,5 @@ class voice_test(PluginInterface):
 
     async def run(self, bot: client.Wcf, recv: XYBotWxMsg):
         logger.debug(f"收到语音消息！{recv}")
-        bot.send_text(str(recv), recv.roomid)
-        bot.send_file(recv.voice, recv.roomid)
+        # bot.send_text(str(recv), recv.roomid)
+        # bot.send_file(recv.voice, recv.roomid)

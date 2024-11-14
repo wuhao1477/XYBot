@@ -15,4 +15,4 @@ class mention_test(PluginInterface):
 
     async def run(self, bot: client.Wcf, recv: XYBotWxMsg):
         logger.debug(f"收到@消息！{recv}")
-        bot.send_text(str(recv), recv.roomid)
+        # bot.send_text(str(recv), recv.roomid)
