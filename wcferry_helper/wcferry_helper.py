@@ -162,6 +162,26 @@ async def async_download_image(bot: client.Wcf, id: int, extra: str, dir: str, t
     return result
 
 
+async def async_download_video(bot: client.Wcf, id: int, extra: str, dir: str, timeout: int = 300) -> str:
+    """
+    Download the video asynchronously.
+    :param bot: The bot.
+    :param id: The id.
+    :param extra: The extra.
+    :param dir: The directory.
+    :param timeout: The timeout.
+    :return: The path of the downloaded video, or an empty string if the download failed.
+    """
+    loop = asyncio.get_running_loop()
+    # 先下载 attach
+    attach_result = await loop.run_in_executor(None, bot.download_attach, id, "", extra)
+    if attach_result != 0:
+        return ""
+    # 再下载视频文件
+    result = await loop.run_in_executor(None, bot.download_image, id, extra, dir, timeout)
+    return result
+
+
 async def async_get_audio_msg(bot: client.Wcf, id: int, dir: str, timeout: int = 30) -> str:
     """
     Get the audio message asynchronously.
