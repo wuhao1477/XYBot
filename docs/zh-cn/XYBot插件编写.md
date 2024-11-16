@@ -6,7 +6,7 @@
 
 ## 插件模板
 
-[🔗插件模版仓库](https://github.com/HenryXiaoYang/XYBot-Plugin-Framework)
+[🔗插件模版仓库](https://github.com/wuhao1477/XYBot-Plugin-Framework)
 
 ## 编写你的第一个XYBot插件
 
@@ -196,4 +196,4 @@ world!
 
 更多微信机器人api函数请看[🔗文档](https://henryxiaoyang.github.io/pywxdll)。
 
-更多机器人插件例子可在[🔗这里](https://github.com/HenryXiaoYang/XYBot/tree/main/plugins)看到。
+更多机器人插件例子可在[🔗这里](https://github.com/wuhao1477/XYBot/tree/main/plugins)看到。

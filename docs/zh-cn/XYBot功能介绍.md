@@ -665,7 +665,7 @@ HenryXiaoYang 发送了一个红包！
 -----XYBot-----
 Bot Running😊
 Bot version: v0.0.6
-Github: https://github.com/HenryXiaoYang/XYBot
+Github: https://github.com/wuhao1477/XYBot
 
 #### **JoshuaZ**
 
@@ -675,7 +675,7 @@ Github: https://github.com/HenryXiaoYang/XYBot
 
 Bot Running😊
 Bot version: v0.0.6
-Github: https://github.com/HenryXiaoYang/XYBot
+Github: https://github.com/wuhao1477/XYBot
 <!-- chat:end -->
 
 ### 获取机器人通讯录
