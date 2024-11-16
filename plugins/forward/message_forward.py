@@ -10,8 +10,8 @@ class message_forward(PluginInterface):
         super().__init__()
         config_path = os.path.join(os.path.dirname(__file__), "forward_config.yml")
         with open(config_path, "r", encoding="utf-8") as f:
-            self.config = yaml.safe_load(f)
-        self.forward_rules = self.config.get("forward_rules", [])
+            self.config = yaml.safe_load(f) or {}  # 如果加载结果为None，使用空字典
+        self.forward_rules = self.config.get("forward_rules", []) or []  # 如果forward_rules为None，使用空列表
         self.image_save_path = os.path.abspath("resources/cache")
         self.voice_save_path = os.path.abspath("resources/cache")
         logger.debug(f"语音保存路径: {self.voice_save_path}")
