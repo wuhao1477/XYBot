@@ -46,6 +46,12 @@ class XYBot:
             await self.attempt_set_nickname(bot, recv, db)
             nickname_latest = True
 
+        # 优先处理转发,如果有转发成功则直接返回
+        for plugin in plugin_manager.plugins["forward"].values():
+            if await plugin.run(bot, recv):
+                # print("转发成功, 不走下面了")
+                return 
+
         message_type = recv.type
         if message_type == 1:  # 是文本消息
             await self.text_message_handler(bot, recv)

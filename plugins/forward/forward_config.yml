@@ -1,0 +1,13 @@
+
+forward_rules:
+  - from: 
+      - "46016088189@chatroom"  # 来源群1
+      - "48011099832@chatroom"  # 来源群2
+    to:
+      - "43113735953@chatroom"  # 目标群1
+      - "48959390118@chatroom"  # 目标群2
+
+  # - from:
+  #     - "27xxxxx@chatroom"  # 另一个转发规则
+  #   to:
+  #     - "28xxxxx@chatroom"

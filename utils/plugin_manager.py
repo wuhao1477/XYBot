@@ -16,7 +16,15 @@ from utils.singleton import singleton
 @singleton
 class PluginManager:
     def __init__(self):
-        self.plugins = {"command": {}, "text": {}, "mention": {}, "image": {}, "voice": {}, "join_group": {}}
+        self.plugins = {
+            "command": {}, 
+            "text": {}, 
+            "mention": {}, 
+            "image": {}, 
+            "voice": {}, 
+            "join_group": {},
+            "forward": {}  # 添加forward类型
+        }
         self.keywords = {}
 
         with open("main_config.yml", "r", encoding="utf-8") as f:  # 读取设置
@@ -148,7 +156,7 @@ class PluginManager:
     def unload_plugins(self):
         """
         卸载所有插件。Unload all plugins.
-        :return: tuple -(bool, str) - 如果卸载成功，返回True和成功消息。如果卸载失败，返回False和失败原因 (bool, str) - True and a success message if the plugins were unloaded successfully, False and an error message otherwise.
+        :return: tuple -(bool, str) - 如果卸载成功，返回True和成功消息。如果卸载失败，返回False和失败原��� (bool, str) - True and a success message if the plugins were unloaded successfully, False and an error message otherwise.
         """
         logger.info("开始卸载所有插件")
         for plugin_type in self.all_plugin_types:

@@ -15,6 +15,5 @@ class image(PluginInterface):
 
     async def run(self, bot: client.Wcf, recv: XYBotWxMsg):
         logger.debug(f"收到图片消息！{recv}")
-
-        bot.send_text(f"收到图片消息！", recv.roomid)
+        # bot.send_text(f"收到图片消息！", recv.roomid)
         # bot.send_image(recv.image, recv.roomid)
