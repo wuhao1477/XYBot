@@ -38,14 +38,6 @@ class XYBot:
     async def message_handler(self, bot: client.Wcf, recv: wxmsg.WxMsg) -> None:
         recv = XYBotWxMsg(recv)
 
-        # 尝试设置用户的昵称
-        db = BotDatabase()
-
-        nickname_latest = False
-        if not db.get_nickname(recv.sender):  # 如果数据库中没有这个用户的昵称，需要先获取昵称再运行插件
-            await self.attempt_set_nickname(bot, recv, db)
-            nickname_latest = True
-
         # 优先处理转发,如果有转发成功则直接返回
         for plugin in plugin_manager.plugins["forward"].values():
             if await plugin.run(bot, recv):
@@ -65,27 +57,6 @@ class XYBot:
             await self.emoji_message_handler(recv)
         else:  # 其他消息，type不存在或者还未知干啥用的
             logger.info(f"[其他消息] {recv}")
-
-        if not nickname_latest:
-            await self.attempt_set_nickname(bot, recv, db)
-
-    async def attempt_set_nickname(self, bot: client.Wcf, recv: XYBotWxMsg, db: BotDatabase) -> None:
-        if recv.from_group():  # 如果是群聊
-            nickname = bot.get_alias_in_chatroom(recv.sender, recv.roomid)
-            db.set_nickname(recv.sender, nickname)
-        else:  # 如果是私聊
-            flag = True
-            for user in bot.contacts:
-                if user["wxid"] == recv.sender:
-                    db.set_nickname(recv.sender, user["name"])
-                    flag = False
-                    break
-
-            if flag:  # 如果没有找到，重新获取一次最新的联系人列表
-                for user in bot.get_contacts():
-                    if user["wxid"] == recv.sender:
-                        db.set_nickname(recv.sender, user["name"])
-                        break
 
     async def text_message_handler(self, bot: client.Wcf, recv: XYBotWxMsg) -> None:
         logger.info(f"[收到文本消息]:{recv}")
