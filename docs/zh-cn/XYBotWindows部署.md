@@ -46,7 +46,7 @@
 `git clone`将`XYBot`从Github克隆下来
 
 ```commandline
-git clone https://github.com/wuhao1477/XYBot.git
+git clone https://github.com/wuhao1477/xybot.git
 ```
 
 ### 5. 下载XYBot所需要的依赖

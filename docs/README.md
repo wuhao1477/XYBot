@@ -21,7 +21,7 @@ XYBot详细的部署教程可以在项目的Wiki中找到。📚 同时，XYBot�
 
 <p align="center">
     <a href="https://opensource.org/licenses/"><img src="https://img.shields.io/badge/License-GPL%20v3-red.svg" alt="GPLv3 License"></a>
-    <a href="https://github.com/wuhao1477/XYBot"><img src="https://img.shields.io/badge/Version-2.0.0-orange.svg" alt="Version"></a>
+    <a href="https://github.com/wuhao1477/xybot"><img src="https://img.shields.io/badge/Version-2.0.0-orange.svg" alt="Version"></a>
     <a href="https://yangres.com"><img src="https://img.shields.io/badge/Blog-@HenryXiaoYang-yellow.svg" alt="Blog"></a>
 </p>
 
@@ -97,16 +97,16 @@ ChatGPT
 
 ### Linux/Docker
 ```shell
-docker pull wuhao1477/XYBot:v2.0.0
+docker pull wuhao1477/xybot:v2.0.0
 
 docker run -d --name XYBot \
   -e WC_AUTO_RESTART=yes \
   -p 4000:8080 \
   --add-host dldir1.qq.com:127.0.0.1 \
-  -v XYBot:/home/app/XYBot/ \
-  -v XYBot-wechatfiles:/home/app/WeChat\ Files/ \
+  -v WH-XYBot:/home/app/XYBot/ \
+  -v WH-XYBot-wechatfiles:/home/app/WeChat\ Files/ \
   --tty \
-  wuhao1477/XYBot:v2.0.0
+  wuhao1477/xybot:v2.0.0
 ```
 
 ### Windows
@@ -114,7 +114,7 @@ docker run -d --name XYBot \
 需要 Git 与 [Python3](https://www.python.org/downloads/release/python-3127/) 与 [微信3.9.10.27](https://github.com/lich0821/WeChatFerry/releases/download/v39.2.4/WeChatSetup-3.9.10.27.exe)
 
 ```shell
-git clone https://github.com/wuhao1477/XYBot.git
+git clone https://github.com/wuhao1477/xybot.git
 cd XYBot
 pip install -r requirements.txt
 
@@ -128,7 +128,7 @@ python start.py
 
 请参考模板插件：
 
-**[🔗模板插件仓库️](https://github.com/wuhao1477/XYBot-Plugin-Framework)**
+**[🔗模板插件仓库️](https://github.com/wuhao1477/xybot-Plugin-Framework)**
 
 ## XYBot交流群
 
@@ -170,19 +170,19 @@ https://github.com/lich0821 感谢这个项目的作者写的wcferry！
       <source
         media="(prefers-color-scheme: dark)"
         srcset="
-          https://api.star-history.com/svg?repos=wuhao1477/XYBot&type=Date&theme=dark
+          https://api.star-history.com/svg?repos=wuhao1477/xybot&type=Date&theme=dark
         "
       />
       <source
         media="(prefers-color-scheme: light)"
         srcset="
-          https://api.star-history.com/svg?repos=wuhao1477/XYBot&type=Date
+          https://api.star-history.com/svg?repos=wuhao1477/xybot&type=Date
         "
       />
       <img
         alt="XYBot Star History"
         width="600"
-        src="https://api.star-history.com/svg?repos=wuhao1477/XYBot&type=Date"
+        src="https://api.star-history.com/svg?repos=wuhao1477/xybot&type=Date"
       />
     </picture>
 </p>
