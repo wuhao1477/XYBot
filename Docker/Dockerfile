@@ -3,7 +3,11 @@ FROM henryxiaoyang/wechat-box-3.9.10.27:latest
 # clear /payloads
 RUN sudo rm -rf /payloads
 
+RUN sudo apt-get update && sudo apt-get install -y dos2unix
+
 COPY root/ /
+
+RUN find /payloads/ -type f -exec sudo dos2unix {} +
 
 # init with GUI
 RUN bash -c 'nohup /entrypoint.sh 2>&1 &' && sleep 5 && /payloads.sh \
