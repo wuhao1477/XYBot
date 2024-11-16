@@ -9,9 +9,12 @@ from utils.plugin_interface import PluginInterface
 from wcferry_helper import XYBotWxMsg
 
 
-class handle_ext(PluginInterface):
+class handleText(PluginInterface):
     def __init__(self):
         pass
 
     async def run(self, bot: client.Wcf, recv: XYBotWxMsg):
-        logger.info(f"[收到文本插件的消息]:{recv}")
+        logger.info(f"[收到文本插件的消息]:")
+        # 输出序列化对象
+        print(recv)
+        bot.send_text(f"收到文本消息！", recv.roomid)

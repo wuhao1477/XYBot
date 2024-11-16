@@ -1,0 +1,8 @@
+[2024-11-16 14:12:24.366] [info] [WCF] [spy.cpp::35::InitSpy] WeChat version: 3.9.12.17
+[2024-11-16 14:12:24.366] [error] [WCF] [spy.cpp::37::InitSpy] ???????
+[2024-11-16 14:15:23.122] [info] [WCF] [spy.cpp::35::InitSpy] WeChat version: 3.9.10.27
+[2024-11-16 14:15:23.124] [info] [WCF] [rpc_server.cpp::1010::RunServer] CMD Server listening on tcp://0.0.0.0:5555
+[2024-11-16 14:19:56.943] [info] [WCF] [rpc_server.cpp::455::PushMessage] MSG Server listening on tcp://0.0.0.0:5556
+[2024-11-16 14:20:37.877] [error] [WCF] [funcs.cpp::80::DecryptImage] File not exists: C:/Users/wuhao/Documents/WeChat Files/wxid_lve2g9hctc7v22/FileStorage/MsgAttach/522ed2a088cb7e69b30fb7edd9f5ac1e/Image/2024-11/9b2d9a1bced5759bcef969405a315d1d.dat
+[2024-11-16 14:20:38.881] [warning] [WCF] [exec_sql.cpp::138::ExecDbQuery] Empty handle, retrying...
+[2024-11-16 14:31:42.546] [error] [WCF] [rpc_server.cpp::488::PushMessage] msgSock-nng_send: Timed out

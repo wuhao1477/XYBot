@@ -93,33 +93,15 @@ class XYBot:
                 await asyncio.create_task(plugin.run(bot, recv))
             return
 
-        # 指令处理
-        if recv.content.startswith(self.command_prefix) or self.command_prefix == "":
-            if self.command_prefix != "":  # 特殊处理，万一用户想要使用空前缀
-                recv.content = recv.content[1:]  # 去除命令前缀
-
-            recv_keyword = recv.content.split(" |\u2005")[0]  # 获取命令关键词
-            for keyword in plugin_manager.get_keywords().keys():  # 遍历所有关键词
-                if re.match(keyword, recv_keyword):  # 如果正则匹配到了，执行插件run函数
-                    plugin_func = plugin_manager.keywords[keyword]
-                    await asyncio.create_task(plugin_manager.plugins["command"][plugin_func].run(bot, recv))
-                    return
-
-            if recv.from_group() and self.command_prefix != "":  # 不是指令但在群里 且设置了指令前缀
-                out_message = "该指令不存在！⚠️"
-                logger.info(f'[发送信息]{out_message}| [发送到] {recv.roomid}')
-                bot.send_text(out_message, recv.roomid)
-                return  # 执行完后直接返回
-
         # 普通消息处理
         for plugin in plugin_manager.plugins["text"].values():
             await asyncio.create_task(plugin.run(bot, recv))
 
     async def image_message_handler(self, bot: client.Wcf, recv: XYBotWxMsg) -> None:
-        logger.info(f"[收到图片消息]{recv}")
+        logger.info(f"[收到图片消息2]{recv}")
 
         if not self.ignorance_check(recv):  # 屏蔽检查
-            return
+            return print("屏蔽检查未通过")
 
         # 如果是图片消息，recv字典中会有一个image键值对，值为图片的绝对路径。
         path = await async_download_image(bot, recv.id, recv.extra, self.image_save_path)
