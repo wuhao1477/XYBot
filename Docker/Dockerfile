@@ -1,5 +1,8 @@
 FROM henryxiaoyang/wechat-box-3.9.10.27:latest
 
+# 设置时区环境变量
+ENV TZ=Asia/Shanghai
+
 # clear /payloads
 RUN sudo rm -rf /payloads
 
