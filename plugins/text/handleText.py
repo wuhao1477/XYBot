@@ -14,5 +14,6 @@ class handleText(PluginInterface):
         pass
 
     async def run(self, bot: client.Wcf, recv: XYBotWxMsg):
+        pass
         # logger.info(f"[收到文本插件的消息]:{recv}")
         # bot.send_text(f"收到文本消息！", recv.roomid)
