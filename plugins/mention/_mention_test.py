@@ -14,5 +14,5 @@ class mention_test(PluginInterface):
         pass
 
     async def run(self, bot: client.Wcf, recv: XYBotWxMsg):
-        logger.debug(f"收到@消息！{recv}")
+        # logger.debug(f"收到@消息！{recv}")
         # bot.send_text(str(recv), recv.roomid)

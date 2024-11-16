@@ -14,5 +14,5 @@ class join_group_test(PluginInterface):
         pass
 
     async def run(self, bot: client.Wcf, recv: XYBotWxMsg):
-        logger.debug(f"收到入群消息！{recv}")
+        # logger.debug(f"收到入群消息！{recv}")
         # bot.send_text(str(recv), recv.roomid)
