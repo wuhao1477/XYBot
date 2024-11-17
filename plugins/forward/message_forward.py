@@ -50,6 +50,7 @@ class message_forward(PluginInterface):
                             # 可以添加其他类型的消息处理
                             else :
                                 logger.warning(f"未知消息类型: {recv.type}，直接转发")
+                                logger.warning({recv})
                                 bot.forward_msg(recv.id, target)
 
                             logger.debug(f"消息已从群 {recv.roomid} 转发至群 {target}")
