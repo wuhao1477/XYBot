@@ -1,0 +1,16 @@
+forward_rules: [
+  {
+    from: [
+      {
+        group_id: "48011099832@chatroom",  # 测试发送2
+        senders: [
+          "wxid_noehgzm863x821",  # 允许的发送者1
+        ]
+      },
+      "11489995107@chatroom"  # 无条件转发的群
+    ],
+    to: [
+      "48959390118@chatroom"  # 测试接收群1
+    ]
+  }
+]

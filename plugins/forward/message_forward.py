@@ -24,37 +24,45 @@ class message_forward(PluginInterface):
             source_groups = rule.get("from", [])
             target_groups = rule.get("to", [])
 
-            if recv.roomid in source_groups:
-                forwarded = True
-                print(f"消息来源群 {recv.roomid} 在转发规则中")
-                for target in target_groups:
-                    if target != recv.roomid:  # 避免自循环转发
-                        try:
-                            if recv.type == 1:  # 文本消息
-                                bot.send_text(recv.content, target)
-                            elif recv.type == 3:  # 图片消息
-                                # 如果是图片消息，recv字典中会有一个image键值对，值为图片的绝对路径。
-                                path = await async_download_image(bot, recv.id, recv.extra, self.image_save_path)
-                                recv.image = os.path.abspath(path)  # 确保图片为绝对路径
-                                bot.send_image(recv.image, target)
-                            elif recv.type == 34:  # 语音消息
-                                path = await async_get_audio_msg(bot, recv.id, self.voice_save_path)  # 下载语音
-                                recv.voice = os.path.abspath(path)  # 确保语音为绝对路径
-                                bot.send_file(recv.voice, target)
-                            # elif recv.type == 43:  # 视频消息
-                            # 视频暂时不支持
-                            #     print(recv)
-                            #     path = await async_download_image(bot, recv.id, recv.extra, self.image_save_path, 300)  # 下载视频
-                            #     recv.voice = os.path.abspath(path)  # 确保视频为绝对路径
-                            #     bot.send_image(recv.voice, target)
-                            # 可以添加其他类型的消息处理
-                            else :
-                                logger.warning(f"未知消息类型: {recv.type}，直接转发")
-                                logger.warning({recv})
-                                bot.forward_msg(recv.id, target)
+            for source in source_groups:
+                if isinstance(source, dict):
+                    group_id = source.get("group_id")
+                    allowed_senders = source.get("senders", [])
+                else:
+                    group_id = source
+                    allowed_senders = []
 
-                            logger.debug(f"消息已从群 {recv.roomid} 转发至群 {target}")
-                        except Exception as e:
-                            logger.error(f"转发消息失败: {e}")
+                if recv.roomid == group_id and (not allowed_senders or recv.sender in allowed_senders):
+                    forwarded = True
+                    print(f"消息来源群 {recv.roomid} 在转发规则中")
+                    for target in target_groups:
+                        if target != recv.roomid:  # 避免自循环转发
+                            try:
+                                if recv.type == 1:  # 文本消息
+                                    bot.send_text(recv.content, target)
+                                elif recv.type == 3:  # 图片消息
+                                    # 如果是图片消息，recv字典中会有一个image键值对，值为图片的绝对路径。
+                                    path = await async_download_image(bot, recv.id, recv.extra, self.image_save_path)
+                                    recv.image = os.path.abspath(path)  # 确保图片为绝对路径
+                                    bot.send_image(recv.image, target)
+                                elif recv.type == 34:  # 语音消息
+                                    path = await async_get_audio_msg(bot, recv.id, self.voice_save_path)  # 下载语音
+                                    recv.voice = os.path.abspath(path)  # 确保语音为绝对路径
+                                    bot.send_file(recv.voice, target)
+                                # elif recv.type == 43:  # 视频消息
+                                # 视频暂时不支持
+                                #     print(recv)
+                                #     path = await async_download_image(bot, recv.id, recv.extra, self.image_save_path, 300)  # 下载视频
+                                #     recv.voice = os.path.abspath(path)  # 确保视频为绝对路径
+                                #     bot.send_image(recv.voice, target)
+                                # 可以添加其他类型的消息处理
+                                else :
+                                    logger.warning(f"未知消息类型: {recv.type}，直接转发")
+                                    logger.warning({recv})
+                                    bot.forward_msg(recv.id, target)
+
+                                logger.debug(f"消息已从群 {recv.roomid} 转发��群 {target}")
+                            except Exception as e:
+                                logger.error(f"转发消息失败: {e}")
 
         return forwarded  # 返回是否进行了转发

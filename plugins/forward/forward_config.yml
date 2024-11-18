@@ -1,13 +1,1 @@
-# forward_rules: []  # 使用空列表作为默认值
-
-forward_rules:
-  - from: 
-      - "43041726383@chatroom"  # 线报1
-    to:
-      - "47600085254@chatroom"  # 毛
-
-  # - from:
-  #     - "47600085254@chatroom"  # 另一个转发规则
-  #     - "46016088189@chatroom"  # 另一个转发规则
-  #   to:
-  #     - "43113735953@chatroom"
+forward_rules: []  # 使用空列表作为默认值
