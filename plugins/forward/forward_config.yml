@@ -1,1 +1,25 @@
-forward_rules: []  # 使用空列表作为默认值
+# forward_rules: []  # 使用空列表作为默认值
+
+forward_rules: [
+  {
+    from: [
+      {
+        group_id: "43041726383@chatroom",  # 测试发送2
+        senders: [
+          # "wxid_noehgzm863x821",  # 允许的发送者1
+        ]
+      },
+    ],
+    to: [
+      "47600085254@chatroom"  # 测试接收群1
+    ]
+  },
+  {
+    from: [
+      "22414052434@chatroom"  # 京东线报群1
+    ],
+    to: [
+      "48959390118@chatroom"  # 测试群
+    ]
+  }
+]
