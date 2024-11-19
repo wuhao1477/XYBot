@@ -61,8 +61,8 @@ class message_forward(PluginInterface):
                                     logger.warning({recv})
                                     bot.forward_msg(recv.id, target)
 
-                                logger.debug(f"消息已从群 {recv.roomid} 转发��群 {target}")
+                                logger.debug(f"消息已从群 {recv.roomid} 转发��群 {target},消息Info: {recv}")
                             except Exception as e:
-                                logger.error(f"转发消息失败: {e}")
+                                logger.error(f"转发消息失败: {e}, 消息Info: {recv}")
 
         return forwarded  # 返回是否进行了转发
